@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>南関競馬バイブル｜言語切替試験</title>
+<style>
+body{font-family:system-ui;text-align:center;margin:0;background:#eef5ff;color:#173958}
+header{background:#1764a1;color:white;padding:28px 12px}
+h1{font-size:25px}
+nav{padding:18px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+button{font-size:17px;padding:12px;border:1px solid #1764a1;border-radius:9px;background:white;color:#1764a1}
+button.active{background:#1764a1;color:white}
+main{background:white;margin:12px;padding:24px;border-radius:14px}
+</style>
+</head>
+<body>
+<header><h1 id="title">南関競馬バイブル</h1></header>
+<nav>
+<button onclick="change('ja')">日本語</button>
+<button onclick="change('en')">English</button>
+<button onclick="change('ko')">한국어</button>
+<button onclick="change('zh')">中文</button>
+</nav>
+<main>
+<h2 id="heading"></h2>
+<p id="message"></p>
+</main>
+<script>
+const words={
+ja:["南関競馬バイブル","切替成功！","日本語で表示しています。"],
+en:["Nankan Racing Bible","Switch successful!","This page is displayed in English."],
+ko:["남관동 경마 바이블","전환 성공!","한국어로 표시하고 있습니다."],
+zh:["南关东赛马指南","切换成功！","正在使用中文显示。"]
+};
+function change(lang){
+const a=words[lang];
+document.getElementById("title").textContent=a[0];
+document.getElementById("heading").textContent=a[1];
+document.getElementById("message").textContent=a[2];
+document.documentElement.lang=lang;
+document.querySelectorAll("button").forEach((b,i)=>{
+b.classList.toggle("active",["ja","en","ko","zh"][i]===lang);
+});
+}
+change("ja");
+</script>
+</body>
+</html>
